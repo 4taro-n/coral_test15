@@ -1,0 +1,512 @@
+@charset "utf-8";
+@import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+#scrollValue {
+    padding: 20px;
+    border-radius: 5px;
+    position: fixed;
+    right: 10px;
+    bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #aaa;
+    z-index: 300;
+}
+/* headerの位置を固定 */
+header {
+    position: fixed;
+    display: flex;
+    top:34px;
+    left: 53px; 
+    right: 27px; 
+    font-size: 12px;  
+    height:78px;
+}
+/* logoのpoistionの調節（真ん中に） */
+.logo_pos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/* corallogoのサイズ、色 */
+.coral_logo {
+    width: 363.072px;
+    height: auto;
+    fill: white;
+}
+@media screen and (max-width: 1180px) {
+    .coral_logo {
+        width: 300px
+    }
+}
+.side_middle_header {
+    flex: 1;
+}
+/* navのサイズと位置、形状、色 */
+.side_header ul {
+    display: flex;
+    /* margin-left: 256px; */
+    /* margin-right: 50px; */
+    height: 78px;
+    text-align: center;  
+    border-radius: 9px;
+    background-color: white;   
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5); 
+}
+/* side_buttons以外のaタグのインブロック化 */
+.side_header ul li a:not(.Message):not(.Access){
+    display: inline-block;
+    height: 78px;
+    line-height: 78px;
+    text-align: center;
+    padding: 0 20px;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+}
+/* サイトtopの色 */
+.top {
+    color:#707070 !important;   
+}
+.top:hover {
+    color: black !important;
+}
+/* side_headerがhoverされた時 */
+.side_header ul li a:not(.Message):not(.Access):hover {
+    color: #707070;
+}
+/* side bottunsの調節(横並びに) */
+.side_buttons {
+    display: flex;
+}
+/* side_buttonsのaタグのインブロック化 */
+.side_buttons li a {
+    display: flex;
+    align-items: center;
+    width: 100px;
+    height: 78px;
+    text-align: center;
+    padding: 0 10px;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s all;
+}
+.side_buttons li a span {
+    flex: 1;
+}
+/* ホバー時 親要素にhoverが当たった場合子要素にアニメーションを当てる*/
+.side_buttons li a:hover span img {
+    transform:translate(0, 1px);
+}
+.side_buttons li a:hover span p{
+    transform:translate(0, -1px);
+}
+/* side_buttonsの背景色 */
+.side_buttons li:first-of-type {
+    background-color: #CE859B;
+}
+.side_buttons li:nth-of-type(2) {
+    background-color: #D54872;
+    border-radius: 0px 9px 9px 0px;
+}
+
+
+
+/* スクロールされた場合のheader_changeデザイン */
+.change {
+    width: 100%;
+    top:0;
+    left:0;
+    /* アニメーション速度調節 */
+    transition: all 0.2s 0s ease-out;
+    background-color: white;
+    /* 影 */
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5); 
+    z-index: 10;
+}
+/* 変更後のcoral_logoのサイズ、色、margin */
+.change .coral_logo {
+    width:200px;
+    height: auto;
+    fill: #707070;
+    margin-left: 50px;
+}
+/* 変更後のside_headerの位置、形調節(角、影のリセット)*/
+.change .side_header ul {
+    /* position:fixed;
+    right: 0; */
+    border-radius: 0px;
+    box-shadow: 0 0px 0px 0;
+}
+.change .side_buttons li:nth-of-type(2) {
+    border-radius: 0px;
+}
+.open,
+.close {
+    /* PC版ではサイドバーの出し入れを適応しない */
+    /* そのためside_headerの出し入れを管理するスイッチを非表示に */
+    display: none;
+}
+input[type="checkbox"] {
+    /* チェックボタンを消す　ー　display:none;を使うと要素まで消えてしまうので、画面外に配置する */
+    position: absolute;
+    right: -50vw;
+}
+
+/* PC版では下のボタンを表示しない */
+.bottom_buttons {
+    display: none;
+}
+
+
+
+
+
+
+
+.main_top {
+    height: 430px;
+    background: url(../image/chair.JPG) no-repeat bottom center;
+    background-size: cover;
+    background-attachment: fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* トップページの中心に配置されている文字 */
+.main_top p:first-of-type {
+    font-weight: 500;
+    font-size: 36px;
+    color: white;
+}
+
+/* .recruit_contentを真ん中に配置
+.recruit_middle {
+    margin: 100px auto;
+    width: 685px;
+}
+.recruit_frame {
+    margin-bottom: 20px;
+}
+.recruit_frame > p {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.recruit_frame:not(:first-of-type) input {
+    width: 100%;
+    font-size: 20px;
+    background: #EFCDD7;
+    border-color: #D54872;
+    border-radius: 5px;
+}
+.send_botton {
+    padding: 8px 20px; 
+    background: #D54872; 
+    color:#fff;
+    text-decoration: none;
+} */
+
+
+.recruit_middle {
+    margin: 100px auto;
+    max-width: 685px;
+}
+.recruit_frame {
+    margin-bottom: 20px;
+}
+.recruit_frame > p {
+    font-weight: 500;
+    font-size: 16px;
+}
+.job_choice {
+    display: flex;
+    justify-content: center;
+}
+.radio_pos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.job_list {
+    font-size: 13.6px;
+}
+.radio_pos input {
+    background:#D36485;
+    margin-left: 20px;
+    width: 18px;
+    height: 18px;
+    border-radius: 20px;
+    border-color: pink;
+    /* vertical-align: middle; */
+}
+
+
+.recruit_frame:not(:first-of-type) input {
+    width: 100%;
+    font-size: 20px;
+    background: #EFCDD7;
+    border-color: #D54872;
+    border-radius: 5px;
+}
+.send_botton {
+    padding: 8px 20px; 
+    background: #D54872; 
+    color:#fff;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* footerの高さ指定、背景色、positionのベース */
+footer {
+    height: 370px;
+    background: linear-gradient(to bottom, white 0px, white 37px, #CE859B 37px, #CE859B 337px, #D36485 337px, #D36485 370px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    color: white;
+}
+/* ボタンをfotterの一番上に配置 */
+.footer_page_top {
+    position: absolute;
+    top:0;
+}
+/* ボタンをinline-block化、色指定 */
+.footer_page_top a {
+    display: inline-block;
+    height: 69px;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    padding: 0 400px;
+    color: white;
+    background-color: #707070;
+} 
+/* ボタンのhover時の色変更 */
+.footer_page_top a:hover {
+    background-color: black;
+}
+/* ボタン内の三角形と文字を縦並びに */
+.footer_button_pos {
+    display: flex;
+    flex-direction: column;
+}
+/* 三角形の構築 */
+.footer_button_pos span{
+    border-right: 20px solid transparent;
+    border-bottom: 30px solid white;
+    border-left: 20px solid transparent; 
+    margin: 6px 30px 0px 30px;
+}
+.footer_button_pos p {
+    height: 0px;
+}
+/* copyrightをfooterの一番下に配置 */
+.footer_copyright {
+    position: absolute;
+    bottom: 0;
+}
+/* コーラルクリニックのロゴのサイズ調節 */
+footer img {
+    width: 224.99px;
+    height: 29.42px;
+}
+/* 診療時間の配置、ライン */
+.footer_opening {
+    display: flex;
+    margin: 0px 90px 0px 115px;
+    padding: 20px 0px 20px 60px;
+    border-left: 2px solid white;
+    font-size: 15.2px;
+}
+/* 曜日と診療時間の間調節 */
+.footer_opening div:first-of-type {
+    margin-right: 45px;
+}
+/* 採用情報のinline-block化 */
+.footer_recruit {
+    display: inline-block;
+    height: 109px;
+    line-height: 109px;
+    text-align: center;
+    text-decoration: none;
+    padding: 0 30px;
+    color: black;
+    background-color: white;
+}
+
+@media screen and (max-width: 1000px) {
+    main {
+        width: 100%;
+    }
+    /* チェックが入っていない状態のside_headerの位置を設定 */
+    .side_header {
+        position: fixed;
+        right: -50vh;
+        transition: left 0.2s ease;
+        transition: all 0.2s;   
+    }
+    /* side_headerを縦に並べる */
+    .side_header ul {
+        flex-direction: column;
+        box-shadow: none;
+    }
+    .side_header ul li {
+        background-color: white;
+        border-bottom: 1px solid black;
+        /* 横幅を広げる */
+        width:200px;
+    }
+    .side_header ul li:first-of-type {
+        border-top: 1px solid black;
+    }
+    /* label(三本線)を再び表示させる */
+    .open,
+    .close {
+        display: block;
+        right: 50px;
+        top: 70px;
+    }
+    .open {
+        position: fixed;
+    }
+  
+    /* side_buttonsを非表示にしてbottm_buttomsを表示させる */
+    .side_buttons {
+        display: none;
+    }
+    .bottom_buttons {
+        display: flex;
+        position:fixed;
+        bottom: 0;
+        z-index: 200;
+        width: 100%;
+    }
+    .bottom_buttons a {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        height: 78px;
+        text-align: center;
+        padding: 0 10px;
+        color: black;
+        text-decoration: none;
+        font-weight: 500;
+        transition: 0.3s all;
+    }
+    .bottom_buttons a span {
+        flex: 1;
+    }
+    .bottom_buttons a:hover span img {
+        transform:translate(0, 1px);
+    }
+    .bottom_buttons a:hover span p {
+        transform:translate(0, -1px);
+    }
+    .bottom_buttons a:first-of-type {
+        background-color: #CE859B;
+    }
+    .bottom_buttons a:nth-of-type(2) {
+        background-color: #D54872;
+    }
+    /* チェックが押されたときのside_headerの位置を設定 */
+    input[type="checkbox"]:checked ~ .side_header {
+        /* right: 50px; */
+        top: 100px;
+        right: 0;
+        padding: 50px 50px 450px 0;
+        border-radius: 3px;
+        background: white;
+    }
+    input[type="checkbox"]:checked .back {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+    /*3本線*/
+    .hamburger-icon, 
+    .hamburger-icon::before, 
+    .hamburger-icon::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top:0;
+        bottom:0;
+        width: 32px;
+        height: 3px;
+        background: white;
+        cursor: pointer;
+        
+    }
+    .hamburger-icon:before {
+        top: 10px;
+    }
+    .hamburger-icon:after {
+        top: 20px;
+    }
+/* 画面がスクロールされてheaderが変形された後のデザイン対応 */
+    .change .open,
+    .change .close {
+        top: 30px;
+    }
+
+    .change .open .hamburger-icon, 
+    .change .open .hamburger-icon::before, 
+    .change .open .hamburger-icon::after {
+        background: #707070;
+    }
+
+    /* input[type="checkbox"]:checked ~ .change .side_header {
+        top:50px;
+    } */
+    .change .side_header {
+        top: 70px !important;
+    }
+    input[type="checkbox"]:checked ~ .open .hamburger-icon{
+        background: transparent;
+    }
+    input[type="checkbox"]:checked ~ .open .hamburger-icon::before{
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        top:10px;
+        z-index:999;
+    }
+    input[type="checkbox"]:checked ~ .open .hamburger-icon::after{
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        top:10px;
+        z-index:999;
+    }
+    .open .hamburger-icon,
+    .open .hamburger-icon::before,
+    .open .hamburger-icon::after {
+        -webkit-transition: all .3s;
+        transition: all .3s;
+    }
+
+
+}
+
+

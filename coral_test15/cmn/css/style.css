@@ -1,0 +1,1100 @@
+@charset "utf-8";
+@import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+#scrollValue {
+    padding: 20px;
+    border-radius: 5px;
+    position: fixed;
+    right: 10px;
+    bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #aaa;
+    z-index: 100;
+}
+/* headerの位置を固定 */
+header {
+    position: fixed;
+    display: flex;
+    top:34px;
+    left: 53px; 
+    right: 27px; 
+    font-size: 12px;  
+    height:78px;
+}
+/* logoのpoistionの調節（真ん中に） */
+.logo_pos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/* corallogoのサイズ、色 */
+.coral_logo {
+    width: 363.072px;
+    height: auto;
+    fill: white;
+}
+@media screen and (max-width: 1180px) {
+    .coral_logo {
+        width: 300px
+    }
+}
+.side_middle_header {
+    flex: 1;
+}
+/* navのサイズと位置、形状、色 */
+.side_header ul {
+    display: flex;
+    /* margin-left: 256px; */
+    /* margin-right: 50px; */
+    height: 78px;
+    text-align: center;  
+    border-radius: 9px;
+    background-color: white;   
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5); 
+}
+/* side_buttons以外のaタグのインブロック化 */
+.side_header ul li a:not(.Message):not(.Access){
+    display: inline-block;
+    height: 78px;
+    line-height: 78px;
+    text-align: center;
+    padding: 0 20px;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+}
+/* サイトtopの色 */
+.top {
+    color:#707070 !important;   
+}
+.top:hover {
+    color: black !important;
+}
+/* side_headerがhoverされた時 */
+.side_header ul li a:not(.Message):not(.Access):hover {
+    color: #707070;
+}
+/* side bottunsの調節(横並びに) */
+.side_buttons {
+    display: flex;
+}
+/* side_buttonsのaタグのインブロック化 */
+.side_buttons li a {
+    display: flex;
+    align-items: center;
+    width: 100px;
+    height: 78px;
+    text-align: center;
+    padding: 0 10px;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s all;
+}
+.side_buttons li a span {
+    flex: 1;
+}
+/* ホバー時 親要素にhoverが当たった場合子要素にアニメーションを当てる*/
+.side_buttons li a:hover span img {
+    transform:translate(0, 1px);
+}
+.side_buttons li a:hover span p{
+    transform:translate(0, -1px);
+}
+/* side_buttonsの背景色 */
+.side_buttons li:first-of-type {
+    background-color: #CE859B;
+}
+.side_buttons li:nth-of-type(2) {
+    background-color: #D54872;
+    border-radius: 0px 9px 9px 0px;
+}
+
+
+
+/* スクロールされた場合のheader_changeデザイン */
+.change {
+    width: 100%;
+    top:0;
+    left:0;
+    /* アニメーション速度調節 */
+    transition: all 0.2s 0s ease-out;
+    background-color: white;
+    /* 影 */
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5); 
+    z-index: 10;
+}
+/* 変更後のcoral_logoのサイズ、色、margin */
+.change .coral_logo {
+    width:200px;
+    height: auto;
+    fill: #707070;
+    margin-left: 50px;
+}
+/* 変更後のside_headerの位置、形調節(角、影のリセット)*/
+.change .side_header ul {
+    /* position:fixed;
+    right: 0; */
+    border-radius: 0px;
+    box-shadow: 0 0px 0px 0;
+}
+.change .side_buttons li:nth-of-type(2) {
+    border-radius: 0px;
+}
+.open, 
+.close {
+    /* PC版ではサイドバーの出し入れを適応しない */
+    /* そのためside_headerの出し入れを管理するスイッチを非表示に */
+    display: none;
+}
+input[type="checkbox"] {
+    /* チェックボタンを消す　ー　display:none;を使うと要素まで消えてしまうので、画面外に配置する */
+    position: absolute;
+    right: -50vw;
+}
+
+/* PC版では下のボタンを表示しない */
+.bottom_buttons {
+    display: none;
+}
+
+/* main内に格納されているsectionのgird管理 */
+main {
+    width: 100%;
+    margin: 0 auto;
+    min-height: 100vh;
+
+    display: grid;
+    grid-template:
+    "area_top_view  area_top_view" 820px
+    "concept       concept"       625px
+    ".....         ....."         60px
+    "services      about"         649px
+    ".....         ....."         40px
+    "covid         covid"         455px
+    ".....         ....."         80px
+    "opening       opening"       625px
+    ".....         ....."         130px
+    "message       message"       625px
+    "access        access"        563px
+    ".....         ....."         165px
+    /  50%     50%; 
+}
+/* top_viewの背景設定 */
+.area_top_view {
+    grid-area: area_top_view;
+    background: url(../image/chair.JPG) no-repeat bottom center;
+    background-size: cover;
+    background-attachment: fixed;
+} 
+/* top_viewのコメント設定 */
+.area_top_view > .container {
+    height: 750px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    padding-left: 53px;
+    color: white;
+    font-size: 32px;
+}
+/* newsをtop_viewの右下に配置 */
+.news {
+    display: flex;
+    justify-content: flex-end;
+}
+/* newsをinline-block化 */
+.news a{
+    display: inline-block;
+    width: 50%;
+    height: 70.19px;
+    line-height: 70.19px;
+    text-align: left;
+    padding-top: 5px;
+    padding-left: 20px;
+    background-color: white;
+    font-size: 12.8px;
+    text-decoration: none;
+    color: black;
+    display: flex;
+}
+/* newsの一部を色変更 */
+.news a span {
+    color: #707070;
+}
+/* 矢印 */
+.news a div {
+    width: 40px;
+    height: 8px;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    transform: skew(45deg);
+    margin-left: 350px;
+    margin-top: 34px;
+    transition: all 0.3s 0s ease-out;
+    z-index: 0;
+}
+/* ホバー時 親要素にhoverが当たった場合子要素にアニメーションを当てる*/
+.news a:hover div {
+    transform:translate(30%) skew(45deg);
+}
+
+/* section_area */
+/* concept_sectionのgird-area指定、背景指定 */
+.concept {
+    grid-area: concept;
+    background: linear-gradient(to right, #EFCDD7 0%, #EFCDD7 50%, #FFFFFF 50%, #FFFFFF 100%);
+    display: flex;  
+    justify-content: center; 
+    align-items: center;
+}
+/* concept内のimageの位置 */
+/* .concept_img_pos {
+    margin-left: 100px;
+} */
+/* concept内のimageのサイズ */
+.concept img {
+    height: 465px;
+    width: auto;  
+}
+/* concept内の文字コンテツの位置、高さ*/
+.concept_contents {
+    display: flex;
+    flex-direction: column;
+    height: 625px;
+}
+/* 文字コンテンツ内の最初の文字列 (section_title) サイズ、位置*/
+.concept_contents p:first-of-type {
+    font-weight: 500;
+    font-size: 19.2px;
+    display: flex;
+    align-items: center;
+    margin-top: 150px;
+}
+/* 文字コンテンツ内の最初の文字列手前ー線のデザイン */
+.concept_contents p:first-of-type:before {
+    border-top: 1px solid;
+    content: "";
+    width: 2.5em; /* 線の長さ */
+    margin-right: 1em; /* 文字の右隣 */
+}
+/* 文字コンテンツ内の二回目の文字列のサイズ、位置 */
+.concept_contents p:nth-of-type(2) {
+    font-weight: 500;
+    font-size: 19.2px;
+    margin: 28px 52px;
+}
+/* 文字コンテンツ内の三番目の文字列サイズ、位置 */
+.concept_contents p:nth-of-type(3) {
+    font-size: 15.2px;
+    margin: 28px 52px;
+}
+
+/* services_sectionのgird-area指定、配置設定*/
+.services {
+    grid-area: services;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+/* タイトルの文字サイズ、フォント */
+.services_contents > p:first-of-type {
+    font-weight: 500;
+    font-size: 19.2px;
+    color:#707070;
+}
+.services p span {
+    font-weight: 500;
+    font-size: 24px;
+    color: black;
+}
+.services_para {
+    margin: 25px 0px;
+}
+.side_margin {
+    padding: 0 20px;
+}
+.square_grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px;
+    padding: 20px;
+}
+.square_grid > li {
+    width: 50%;
+    padding: 10px;
+}
+.square_grid li a {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+    color: #707070;
+    background: #EFCDD7;
+    /* border: 1px solid #000; */
+    text-decoration: none;
+}
+.side_margin {
+    margin: 0 50px;
+}
+
+
+/* about_sectionのgird-area指定、配置設定*/
+.about {
+    grid-area: about;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* about_contentsの位置指定 */
+/* .about_contents {
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
+/* about_sectionのタイトルの色、フォント、配置指定 */
+.about p:first-of-type {
+    font-weight: 500;
+    font-size: 19.2px;
+    color:#707070;
+    margin-bottom: 96px;
+}
+/* about_sectionのタイトルの色、フォント */
+.about p span {
+    font-weight: 500;
+    font-size: 24px;
+    color: black;
+}
+
+/* covid_sectionのgird-area指定、配置設定*/
+.covid {
+    grid-area: covid;
+    font-size: 15.2px;
+    position: relative;
+    z-index: 1;
+}
+/* covid_titleのポジション指定 */
+.covid_title {
+    position: absolute;
+    left: 300px;
+}
+/* covid_titleの色、サイズ指定 */
+.covid_title p {
+    background-color: white;
+    color: #800000;
+    font-size: 19.2px;
+}
+/* covid_boxの位置指定 */
+.covid_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+/* covid_boxのborder指定、ボックス内のpadding指定 */
+.covid_border {
+    padding: 30px 30px 30px 30px;
+    border: 5px solid #EFCDD7;
+}
+/* listのドット設定 */
+.covid ul {
+    margin: 1em 0;
+	padding-left: 40px;
+	/* list-style-type: disc; */
+    list-style: square;
+}
+/* list同士のmargin指定 */
+.covid ul li {
+    margin: 25px 0px 25px;
+}
+
+/* opening_sectionのgird-area指定、配置設定*/
+.opening {
+    grid-area: opening;
+    background: linear-gradient(to right, white 0%, white 50%, #EFCDD7 50%, #EFCDD7 100%);
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+/* 写真との隙間の調節 */
+.opening_contents_pos {
+    padding-right: 23px;
+}
+/* タイトルを左上に配置 */
+.opening p:first-of-type {
+    position: absolute;
+    font-weight: 500;
+    font-size: 19.2px;
+    color: #707070;
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 0;
+}
+/* タイトルの横に横線を配置 */
+.opening p:first-of-type:before {
+    border-top: 1px solid;
+    content: "";
+    width: 2.5em; /* 線の長さ */
+    /* margin-right: 0.5em; 文字の右隣 */
+}
+/* 文字サイズとtableとの隙間の調節 */
+.opening p:nth-of-type(2) {
+    font-size: 19.5px;
+    margin-bottom: 61px;
+}
+/* 電話番号のサイズを指定 */
+.opening p:nth-of-type(2) span {
+    font-size: 30px;
+}
+.opening p:nth-of-type(3) {
+    font-size: 15px;
+}
+/* 写真の高さ指定（サイズ） */
+.opening img {
+    height: 465px;
+    width: auto;
+}
+/* tableの線を追加 */
+.opening table {
+    border-collapse: collapse;
+}
+/* tableのセルのサイズ調節、フォント調節 */
+.opening table th, table td {
+    padding: 10px 20px;
+    text-align: center;
+    border: 1px solid #000;
+    font-size: 15px;
+}
+/* tableのセルの背景指定 */
+.bg-pink {
+    background-color: #EFCDD7;
+}
+
+/* message_sectionのgird-area指定、配置設定*/
+.message {
+    grid-area: message;
+    background: linear-gradient(to right, #EFCDD7 0%, #EFCDD7 50%, #FFFFFF 50%, #FFFFFF 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 写真とコンテンツの隙間の調節 */
+/* .message_img_pos {
+    margin-left: 100px;
+} */
+/* 写真の高さ指定（サイズ指定） */
+.message img {
+    height: 465px;
+    width: auto;
+}
+/* コンテンツの位置 */
+.message_contents {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin-top: 300px;
+}
+/* タイトルのフォント指定、サイズ指定 */
+.message_contents > p {
+    font-weight: 500;
+    font-size: 19.2px;
+    display: flex;
+    align-items: center; 
+    color: #707070;
+}
+/* タイトルの横に横線を配置 */
+.message_contents > p:before {
+    border-top: 1px solid;
+    content:"";
+    width: 2.5em;
+    /* margin-right: 1em; */
+}
+/* 文字コンテンツの位置調節 */
+.message_p_pos p {
+    margin: 28px 52px;
+    flex-direction: column;
+    /* flex-direction: column; */
+    justify-content: space-between;
+}
+/* 文字のサイズ、色調節 */
+.message_p_pos p:first-of-type {
+    font-weight: 500;
+    font-size: 19.2px;
+}
+.message_p_pos p:nth-of-type(2) {
+    font-size: 15.2px;
+}
+.message_p_pos p:nth-of-type(3) {
+    font-weight: 500;
+    font-size: 11.52px;
+    color: #707070;
+    margin-top: 130px;
+}
+.message_p_pos p:nth-of-type(3) span {
+    font-size: 19.2px;
+}
+
+
+/* access_sectionのgird-area指定、配置設定*/
+.access {
+    grid-area: access;
+    background-color: #EFCDD7;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+/* タイトルの左上に配置、フォントサイズと色を指定 */
+.access p:first-of-type {
+    position: absolute;
+    font-weight: 500;
+    font-size: 19.2px;
+    color: #707070;
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 0;
+}
+/* タイトルの横に横線を配置 */
+.access p:first-of-type:before {
+    border-top: 1px solid;
+    content: "";
+    width: 2.5em; /* 線の長さ */
+    margin-right: 1em;
+}
+/* 文字コンテンツの位置調節 */
+.access_contents {
+    margin-right: 55px;
+    font-size: 19.5px;
+}
+.access_contents p:nth-of-type(3) {
+    margin-top: 50px;
+}
+/* Googleマップの入るボックスの高さ、横幅、位置指定 */
+.gmap {
+    height: 389px;
+    /* width: 938px; */
+    width: 80%;
+    overflow: hidden;
+    /* padding-bottom: 56.25%; */
+    position: relative;
+}
+/* gooogleマップをボックスの中に配置 */
+.gmap iframe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+/* footerの高さ指定、背景色、positionのベース */
+footer {
+    height: 370px;
+    background: linear-gradient(to bottom, white 0px, white 37px, #CE859B 37px, #CE859B 337px, #D36485 337px, #D36485 370px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    color: white;
+}
+/* ボタンをfotterの一番上に配置 */
+.footer_page_top {
+    position: absolute;
+    top:0;
+}
+/* ボタンをinline-block化、色指定 */
+.footer_page_top a {
+    display: inline-block;
+    height: 69px;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    padding: 0 400px;
+    color: white;
+    background-color: #707070;
+} 
+/* ボタンのhover時の色変更 */
+.footer_page_top a:hover {
+    background-color: black;
+}
+/* ボタン内の三角形と文字を縦並びに */
+.footer_button_pos {
+    display: flex;
+    flex-direction: column;
+}
+/* 三角形の構築 */
+.footer_button_pos span{
+    border-right: 20px solid transparent;
+    border-bottom: 30px solid white;
+    border-left: 20px solid transparent; 
+    margin: 6px 30px 0px 30px;
+}
+.footer_button_pos p {
+    height: 0px;
+}
+/* copyrightをfooterの一番下に配置 */
+.footer_copyright {
+    position: absolute;
+    bottom: 0;
+}
+/* コーラルクリニックのロゴのサイズ調節 */
+footer img {
+    width: 224.99px;
+    height: 29.42px;
+}
+/* 診療時間の配置、ライン */
+.footer_opening {
+    display: flex;
+    margin: 0px 90px 0px 115px;
+    padding: 20px 0px 20px 60px;
+    border-left: 2px solid white;
+    font-size: 15.2px;
+}
+/* 曜日と診療時間の間調節 */
+.footer_opening div:first-of-type {
+    margin-right: 45px;
+}
+/* 採用情報のinline-block化 */
+.footer_recruit {
+    display: inline-block;
+    height: 109px;
+    line-height: 109px;
+    text-align: center;
+    text-decoration: none;
+    padding: 0 30px;
+    color: black;
+    background-color: white;
+}
+.footer_position {
+    display: flex;
+}
+.footer_adress {
+    margin-right: -60px;
+}
+
+/* アニメーション */
+/* まとめて戻す */
+.concept .show img,
+.concept .show p,
+.services .show p,
+.services .show li,
+.about .show p,
+.about .show li,
+.opening .show p,
+.opening .show tbody,
+.opening .show img,
+.message .show img,
+.message .show p,
+.access .show p {
+    transform: none;
+    opacity: 1;
+}
+.animationTarget img,
+.animationTarget p,
+.animationTarget div,
+.animationTarget li,
+.animationTarget tbody {
+    /* アニメーション */
+    opacity: 0;
+    /* 0.5秒遅らせる */
+    transition: 1s .5s;
+    transform: translate(-20px,20px);
+}
+
+@media screen and (max-width: 1000px) {
+    main {
+        width: 100%;
+    }
+    /* ハンバーガーメニューなために一時削除 */
+    /* チェックが入っていない状態のside_headerの位置を設定 */
+    /* .side_header {
+        position: fixed;
+        right: -50vh;
+        transition: left 0.2s ease;
+        transition: all 0.2s;   
+    } */
+    header {
+        position: fixed;
+        right: -50vh;
+        transition: left 0.2s ease;
+        transition: all 0.2s;  
+    }
+    /* side_headerを縦に並べる */
+    .side_header ul {
+        flex-direction: column;
+        box-shadow: none;
+    }
+    .side_header ul li {
+        background-color: white;
+        border-bottom: 1px solid black;
+        /* 横幅を広げる */
+        width:200px;
+    }
+    .side_header ul li:first-of-type {
+        border-top: 1px solid black;
+    }
+    /* label(三本線)を再び表示させる */
+    .open,
+    .close {
+        display: block;
+        right: 50px;
+        top: 70px;
+    }
+    .open {
+        position: fixed;
+    }
+  
+    /* side_buttonsを非表示にしてbottm_buttomsを表示させる */
+    .side_buttons {
+        display: none;
+    }
+    /* bottom_buttonsの配置 */
+    .bottom_buttons {
+        display: flex;
+        position:fixed;
+        bottom: 0;
+        z-index: 200;
+        width: 100%;
+    }
+    /* bottom_buttonsのデザイン */
+    .bottom_buttons a {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        height: 78px;
+        text-align: center;
+        padding: 0 10px;
+        color: black;
+        text-decoration: none;
+        font-weight: 500;
+        transition: 0.3s all;
+    }
+    .bottom_buttons a span {
+        flex: 1;
+    }
+    .bottom_buttons a:hover span img {
+        transform:translate(0, 1px);
+    }
+    .bottom_buttons a:hover span p {
+        transform:translate(0, -1px);
+    }
+    .bottom_buttons a:first-of-type {
+        background-color: #CE859B;
+    }
+    .bottom_buttons a:nth-of-type(2) {
+        background-color: #D54872;
+    }
+    /* ハンバーガーメニューなために一時削除 */
+    /* チェックが押されたときのside_headerの位置を設定 */
+    /* input[type="checkbox"]:checked ~ .side_header {
+        top: 100px;
+        right: 0;
+        padding: 50px 50px 450px 0;
+        border-radius: 3px;
+        background: white;
+    }
+    input[type="checkbox"]:checked .back {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+    } */
+
+    input[type="checkbox"]:checked ~ header {
+        top: 100px;
+        right: 0;
+        padding: 50px 50px 450px 0;
+        border-radius: 3px;
+        background: white;
+    }
+    input[type="checkbox"]:checked .back {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+    /*3本線*/
+    .hamburger-icon, 
+    .hamburger-icon::before, 
+    .hamburger-icon::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top:0;
+        bottom:0;
+        width: 32px;
+        height: 3px;
+        background: white;
+        cursor: pointer;
+        
+    }
+    .hamburger-icon:before {
+        top: 10px;
+    }
+    .hamburger-icon:after {
+        top: 20px;
+    }
+/* 画面がスクロールされてheaderが変形された後のデザイン対応 */
+    .change .open,
+    .change .close {
+        top: 30px;
+    }
+
+    .change .open .hamburger-icon, 
+    .change .open .hamburger-icon::before, 
+    .change .open .hamburger-icon::after {
+        background: #707070;
+    }
+
+    /* input[type="checkbox"]:checked ~ .change .side_header {
+        top:50px;
+    } */
+　　
+    /* スクロールされてheaderが変形した後 */
+    .change .side_header {
+        top: 70px !important;
+    }
+    input[type="checkbox"]:checked ~ .open .hamburger-icon{
+        background: transparent;
+    }
+    input[type="checkbox"]:checked ~ .open .hamburger-icon::before{
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        top:10px;
+        z-index:999;
+    }
+    input[type="checkbox"]:checked ~ .open .hamburger-icon::after{
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        top:10px;
+        z-index:999;
+    }
+    .open .hamburger-icon,
+    .open .hamburger-icon::before,
+    .open .hamburger-icon::after {
+        -webkit-transition: all .3s;
+        transition: all .3s;
+    }
+
+    /* 各セクションの編集 */
+    main {
+        grid-template:
+        "area_top_view  area_top_view" 820px
+        "concept       concept"       625px
+        ".....         ....."         150px
+        "services      services"      649px
+        ".....         ....."         40px
+        "about         about"         649px
+        ".....         ....."          40px
+        "covid         covid"         455px
+        ".....         ....."         80px
+        "opening       opening"       810px
+        "message       message"       925px
+        "access        access"        563px
+        ".....         ....."         165px
+        /  50%     50%; 
+    }
+
+    .news a {
+        width: 100%;
+        text-align: center;
+    }
+    /* .news a p {
+        display: flex;
+        justify-content: center;
+    } */
+    .concept {
+        flex-direction: column;
+        background: #EFCDD7;
+    }
+    .concept_contents {
+        width: 100%;
+    }
+    .concept_contents p:not(:first-of-type) {
+        display: flex;
+        justify-content: center;
+    }
+    .concept_img_pos {
+        order: 1;
+        margin: 0;
+    }
+
+    .opening {
+        flex-direction: column;
+        background: linear-gradient(to bottom, white 0%, white 60%, #EFCDD7 60%, #EFCDD7 100%);
+    }
+    .opening_contents_pos {
+        padding-right: 0;
+    }
+
+
+    .message {
+        flex-direction: column;
+        background: #EFCDD7;
+        padding-bottom: 50px;
+        position: relative;
+    }
+    .message_contents {
+        margin-top: 0;
+    }
+    .message_img_pos {
+        order: 1;
+    }
+    /* .message_contents p:first-of-type {
+        justify-content: top;
+    } */
+    .message_contents p:not(:first-of-type) {
+        display: flex;
+        justify-content: center;
+    }
+    .message_contents > p {
+        position: absolute;
+        top:0;
+        left: 0;
+    }
+
+    .access {
+        flex-direction: column;
+        background: linear-gradient(to bottom, #EFCDD7 0%, #EFCDD7 80%, white 80%, white 100%);
+    
+        align-items: flex-start;
+        padding-top: 100px;
+    }
+    .access_contents p:nth-of-type(2) {
+        margin-top: 30px;
+    }
+    .access_contents {
+        margin-left: 50px;
+    }
+    .gmap {
+        margin-left: 50px;
+    }
+    /* .footer_adress {
+        padding-left: 10px;
+
+    } */
+  
+}
+@media screen and (max-width: 428px) {
+    /* bottom_buttons以外のボタンを最適化 */
+    img:not(.bottom_buttons img) {
+        width: 100%;
+        max-width: 100%;
+        height: auto; 
+    }
+    header {
+        left: 10px;
+    }
+    .coral_logo {
+        width: 250px;
+        height: auto;
+    }
+    /*3本線*/
+    .hamburger-icon, 
+    .hamburger-icon::before, 
+    .hamburger-icon::after {
+        top:-10px;
+    }
+    .hamburger-icon:before {
+        top: 10px;
+    }
+    .hamburger-icon:after {
+        top: 20px;
+    }
+
+    /* 各セクションの編集 */
+    main {
+        grid-template:
+        "area_top_view  area_top_view" 820px
+        "concept       concept"       625px
+        ".....         ....."         150px
+        "services      services"      649px
+        ".....         ....."         40px
+        "about         about"         649px
+        ".....         ....."          40px
+        "covid         covid"         600px
+        ".....         ....."         80px
+        "opening       opening"       700px
+        "message       message"       800px
+        "access        access"        500px
+        ".....         ....."         100px
+        /  50%     50%; 
+    }
+    /* top_viewのコメント設定 */
+    .area_top_view > .container {
+        padding: 0 60px;
+        font-size: 17px;
+    }
+    /* 改行を強制的に禁止する */
+    .news a {
+        white-space: nowrap;
+    }
+    .news a div {
+        display: none;
+    }
+    .covid {
+        margin: 0 7px;
+    }
+    .covid_title {
+        left: 10px;
+    }
+    .opening table th, table td {
+        padding: 5px 10px;
+    }
+    .opening p:nth-of-type(2) {
+        margin-bottom: 20px;
+    }
+    .opening p:nth-of-type(3) {
+        font-size: 10px;
+    }
+    .message_p_pos p {
+        margin: 28px;
+    }
+    .messsage_p_pos p:nth-of-type(3) {
+        margin-top: 50px;
+    }
+    /* footer {
+        height: 700px;
+    } */
+    .footer_position {
+        flex-direction: column;
+    }
+    .footer_recruit {
+        display: none;
+    }
+    .footer_opening {
+        margin: 10px 0;
+        padding: 0;
+    }
+    .footer_adress img {
+        display: none;
+    }
+    .footer_page_top a {
+        display: none;
+    }
+
+    
+
+}
+
+
+
+
+
+
